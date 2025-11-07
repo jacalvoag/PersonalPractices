@@ -10,14 +10,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.josecalvo.examenu2.viewmodels.FormViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormScreen(
     onBack: () -> Unit,
-    viewModel: FormViewModel = viewModel()
+    viewModel: FormViewModel = hiltViewModel()
 ) {
     var name by remember { mutableStateOf("") }
     var age by remember { mutableStateOf("") }
