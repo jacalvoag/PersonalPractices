@@ -80,4 +80,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.swipe)
+
+    //Agregando dependencia para splash screen
+    implementation(libs.androidx.core.splashscreen)
 }
