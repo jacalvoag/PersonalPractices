@@ -2,22 +2,15 @@ package com.activity.chafael.students_unidad3.data
 
 import kotlinx.coroutines.flow.Flow
 
-class StudentRepository(private val studentDao: StudentDao) {
-    val allStudents: Flow<List<Student>> = studentDao.getAllStudents()
+class StudentRepository(private val dao: StudentDao) {
+    // Tab 1
+    val allStudents: Flow<List<Student>> = dao.getAllStudents()
+    suspend fun insert(student: Student) = dao.insert(student)
+    suspend fun delete(student: Student) = dao.delete(student)
 
-    suspend fun insert(student: Student) {
-        studentDao.insert(student)
-    }
-
-    suspend fun update(student: Student) {
-        studentDao.update(student)
-    }
-
-    suspend fun delete(student: Student) {
-        studentDao.delete(student)
-    }
-
-    suspend fun getStudentById(id: Int): Student? {
-        return studentDao.getStudentById(id)
-    }
+    // Tab 2
+    suspend fun getAverageScore(): Double = dao.getAverageScore() ?: 0.0
+    suspend fun getStudentWithLowestScore(): Student? = dao.getStudentWithLowestScore()
+    suspend fun getTop3ByGroup(group: String): List<Student> = dao.getTop3ByGroup(group)
+    suspend fun getAllGroups(): List<String> = dao.getAllGroups()
 }
